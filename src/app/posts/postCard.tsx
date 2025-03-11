@@ -17,12 +17,14 @@ interface Props {
   post: Post;
   currentUserId: string | null;
   profileOwnerId?: string;
+  useLink?:boolean
 }
 
 export default function PostCard({
   post,
   profileOwnerId,
   currentUserId,
+  useLink=true
 }: Props) {
   return (
     <Card className="overflow-hidden rounded-2xl shadow-lg border-2 dark:shadow-shadow">
@@ -75,7 +77,26 @@ export default function PostCard({
       </CardHeader>
 
       {/* POST CONTENT */}
-      <Link href={`/posts/${post.id}`} className="block ">
+      {useLink ? (
+        <Link href={`/posts/${post.id}`} className="block ">
+          <CardContent className="py-1 px-4 space-y-3 ">
+            <p className="text-lg font-semibold break-words">{post.title}</p>
+            <p className="text-sm break-words">{post.content}</p>
+
+            {post.image && (
+              <div className="relative mx-auto w-full max-w-[600px] max-h-[300px] overflow-hidden border-2 shadow-md hover:shadow-lg transition-shadow duration-200 rounded-2xl">
+                <Image
+                  src={post.image}
+                  alt="Post content"
+                  width={200}
+                  height={200}
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            )}
+          </CardContent>
+        </Link>
+      ) : (
         <CardContent className="py-1 px-4 space-y-3 ">
           <p className="text-lg font-semibold break-words">{post.title}</p>
           <p className="text-sm break-words">{post.content}</p>
@@ -92,7 +113,7 @@ export default function PostCard({
             </div>
           )}
         </CardContent>
-      </Link>
+      )}
 
       <CardFooter className="flex flex-col px-4  ">
         <PostFooter

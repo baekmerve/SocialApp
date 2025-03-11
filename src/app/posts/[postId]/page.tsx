@@ -10,7 +10,7 @@ async function Post({ postId }: { postId: string }) {
   const currentUserId = await getDbUserId();
   if (!post) notFound();
 
-  return <PostCard post={post} currentUserId={currentUserId} />;
+  return <PostCard post={post} currentUserId={currentUserId} useLink={false} />;
 }
 
 export default async function SinglePostPage({
