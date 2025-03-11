@@ -27,10 +27,10 @@ export default function PostCard({
   return (
     <Card className="overflow-hidden rounded-2xl shadow-lg border-2 dark:shadow-shadow">
       {/* POST HEADER */}
-      <CardHeader className="px-4 py-0">
-        <div className="flex items-start space-x-4 ">
+      <CardHeader className="px-4">
+        <div className="flex items-center space-x-2 ">
           <Link href={`/profile/${post.author.username}`}>
-              <Avatar className="w-12 h-12 border-2 ">
+            <Avatar className="w-12 h-12 border-2 ">
               <AvatarImage
                 src={post.author.image ?? "/avatar.avif"}
                 alt="user's avatar"
@@ -39,13 +39,13 @@ export default function PostCard({
             </Avatar>
           </Link>
 
-          <div className="flex-1 min-w-0">
+          <div className="flex-1 min-w-0 ">
             <div className="flex justify-between items-start">
               <div className="w-full flex space-x-2 justify-between truncate ">
-                <div className="flex items-center space-x-3 text-sm text-gray-500">
+                <div className="flex items-center space-x-2 text-sm text-gray-500">
                   <Link
                     href={`/profile/${post.author.username}`}
-                    className="font-semibold text-foreground hover:scale-105 "
+                    className="font-semibold text-foreground text-base hover:scale-105 "
                   >
                     {post.author.name}
                   </Link>
