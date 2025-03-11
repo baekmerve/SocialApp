@@ -27,8 +27,8 @@ export default function PostCard({
   return (
     <Card className="overflow-hidden rounded-2xl shadow-lg border-2 dark:shadow-shadow">
       {/* POST HEADER */}
-      <CardHeader className="px-4">
-        <div className="flex items-center space-x-2 ">
+      <CardHeader className="px-4 ">
+        <div className="flex items-center ">
           <Link href={`/profile/${post.author.username}`}>
             <Avatar className="w-12 h-12 border-2 ">
               <AvatarImage
@@ -39,9 +39,9 @@ export default function PostCard({
             </Avatar>
           </Link>
 
-          <div className="flex-1 min-w-0 ">
+          <div className="flex-1 min-w-0 p-2 ">
             <div className="flex justify-between items-start">
-              <div className="w-full flex space-x-2 justify-between truncate ">
+              <div className="w-full flex space-x-2 justify-between  ">
                 <div className="flex items-center space-x-2 text-sm text-gray-500">
                   <Link
                     href={`/profile/${post.author.username}`}

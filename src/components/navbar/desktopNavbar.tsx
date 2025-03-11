@@ -36,11 +36,7 @@ export default async function DesktopNavbar() {
             aria-label="profile Button"
           >
             <Link
-              href={`/profile/${
-                user.username ??
-                //user.emailAddresses[0].emailAddress.split("@")[0]
-                user.email.split("@")[0]
-              }`}
+              href={`/profile/${user.username ?? user.email.split("@")[0]}`}
             >
               <UserIcon className="w-4 h-4" />
               <span className="hidden lg:inline">Profile</span>
