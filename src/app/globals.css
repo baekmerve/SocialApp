@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+@import "uploadthing/tw/v4";
+@source "../../node_modules/@uploadthing/react/dist";
+
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive: var(--destructive);
+
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+
+    --color-shadow: var(--shadow);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --background: hsl(200, 30%, 97%);
+
+  --card: hsl(60, 5%, 96%);
+  --card-foreground: hsl(220, 20%, 15%);
+
+  --primary: hsl(345.3 82.7% 40.8%);
+  --primary-foreground: hsl(0, 0%, 100%);
+
+  --secondary: hsl(47.9 95.8% 53.1%);
+  --secondary-foreground: hsl(0, 0%, 100%);
+
+  --muted: hsl(210, 10%, 85%);
+  --muted-foreground: hsl(210, 10%, 45%);
+
+  --destructive: hsl(0, 80%, 45%);
+  --destructive-foreground: hsl(0, 0%, 100%);
+
+  --border: hsl(240 4.9% 83.9%);
+  --input: hsl(240 4.9% 83.9%);
+  --ring: hsl(200, 20%, 60%);
+}
+
+.dark {
+  --background: hsl(0 0% 9%);
+  --foreground: hsl(0, 0%, 100%);
+
+  --card: hsl(240, 5.9%, 10%);
+  --card-foreground: hsl(0, 0%, 100%);
+
+  --primary: hsl(345.3 82.7% 40.8%);
+  --primary-foreground: hsl(0, 0%, 100%);
+
+  --secondary: hsl(45.4 93.4% 47.5%);
+  --secondary-foreground: hsl(0, 0%, 100%);
+
+  --muted: hsl(0 0% 25.1%);
+  --muted-foreground: hsl(0, 0%, 70%);
+
+  --destructive: hsl(0, 80%, 45%);
+  --destructive-foreground: hsl(0, 0%, 100%);
+
+  --border: hsl(240 5.3% 26.1%);
+  --input: hsl(0, 0%, 20%);
+  --ring: hsl(200, 20%, 40%);
+
+  --shadow: hsl(240, 10%, 3.9%);
+}
+
+@layer base {
+  * {
+    @apply border-border box-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar:horizontal {
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/80 rounded-full;
+}
+
+.task > ::-webkit-slider-thumb {
+  @apply bg-primary rounded-full;
+}
