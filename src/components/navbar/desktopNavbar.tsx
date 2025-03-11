@@ -1,4 +1,3 @@
-import { currentUser } from "@clerk/nextjs/server";
 import React from "react";
 import ModeToggle from "../modeToggle";
 import Link from "next/link";
@@ -6,10 +5,10 @@ import { Button } from "../ui/button";
 import { HomeIcon, UserIcon } from "lucide-react";
 import { SignInButton, UserButton } from "@clerk/nextjs";
 import NotificationBell from "../notifications/notificationBell";
-
+import { getDbUserInfo } from "@/actions/userActions";
 
 export default async function DesktopNavbar() {
-  const user = await currentUser();
+  const user = await getDbUserInfo();
 
   return (
     <div className="hidden md:flex items-center space-x-4">
@@ -39,7 +38,8 @@ export default async function DesktopNavbar() {
             <Link
               href={`/profile/${
                 user.username ??
-                user.emailAddresses[0].emailAddress.split("@")[0]
+                //user.emailAddresses[0].emailAddress.split("@")[0]
+                user.email.split("@")[0]
               }`}
             >
               <UserIcon className="w-4 h-4" />

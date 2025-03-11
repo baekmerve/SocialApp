@@ -10,7 +10,6 @@ import { createComment } from "@/actions/postActions";
 import { SignInButton, useUser } from "@clerk/nextjs";
 import { Avatar, AvatarImage } from "../ui/avatar";
 
-
 interface CommentInputProps {
   postId: string;
 }
@@ -18,7 +17,7 @@ interface CommentInputProps {
 export default function CommentInput({ postId }: CommentInputProps) {
   const [newComment, setNewComment] = useState("");
   const [isCommenting, setIsCommenting] = useState(false);
-  const {user}= useUser();
+  const { user } = useUser();
 
   const handleAddComment = async () => {
     if (!newComment.trim() || isCommenting) return;
@@ -42,7 +41,7 @@ export default function CommentInput({ postId }: CommentInputProps) {
     <>
       {user ? (
         <div className="flex space-x-4">
-           <Avatar className="w-12 h-12 border-2 ">
+          <Avatar className="w-12 h-12 border-2 ">
             <AvatarImage
               src={user?.imageUrl || "/avatar.avif"}
               alt="user's avatar"

@@ -44,7 +44,7 @@ export default async function ProfilePageServer({
   //profile owner
   const profileOwner = await getProfileByUsername(username);
   //current logged in
-  const currentUser = await getDbUserId();
+  const currentUserId = await getDbUserId();
 
   if (!profileOwner) notFound();
   const [posts, likedPosts, isCurrentUserFollowing] = await Promise.all([
@@ -52,7 +52,7 @@ export default async function ProfilePageServer({
     getUserLikedPosts(profileOwner.id),
     isFollowing(profileOwner.id),
   ]);
-  const isOwnProfile = currentUser === profileOwner.id;
+  const isOwnProfile = currentUserId === profileOwner.id;
 
   return (
     <div className="mx-auto h-full ">
@@ -86,7 +86,7 @@ export default async function ProfilePageServer({
 
               {/* Follow / Edit Button */}
               <div className="mt-4">
-                {!currentUser ? (
+                {!currentUserId ? (
                   <SignInButton mode="modal">
                     <Button className="h-10 flex items-center">
                       <UserPlus className="size-5 mr-2" />
@@ -142,7 +142,7 @@ export default async function ProfilePageServer({
                     key={post.id}
                     post={post}
                     profileOwnerId={profileOwner.id}
-                    currentUserId={currentUser}
+                    currentUserId={currentUserId}
                   />
                 ))
               ) : (
@@ -162,7 +162,7 @@ export default async function ProfilePageServer({
                     key={post.id}
                     post={post}
                     profileOwnerId={profileOwner.id}
-                    currentUserId={currentUser}
+                    currentUserId={currentUserId}
                   />
                 ))
               ) : (
