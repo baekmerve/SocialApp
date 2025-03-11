@@ -50,6 +50,19 @@ export async function getUserByClerkId(clerkId: string) {
     },
   });
 }
+export async function getDbUserInfo() {
+  //clerk id
+  const { userId: clerkId } = await auth();
+  if (!clerkId) return null;
+
+  //user coming from database
+  const user = await getUserByClerkId(clerkId);
+
+  if (!user) throw new Error("User not found");
+
+  //we got the db user id by usinf clerk id
+  return user;
+}
 
 export async function getDbUserId() {
   //clerk id
