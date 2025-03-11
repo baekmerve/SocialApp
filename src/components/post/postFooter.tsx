@@ -60,7 +60,7 @@ export default function PostFooter({
 
       {/* COMMENTS SECTION */}
       {showComments && (
-        <div className="w-full space-y-5 pt-5 border-t-2 animate-fade-in ">
+        <div className="w-full space-y-5 pt-5 border-t-2 animate-in ">
           {/* DISPLAY COMMENTS */}
           <Suspense fallback={<CommentSkeleton />}>
             <CommentList comments={comments} currentUserId={currentUserId} />

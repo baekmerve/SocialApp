@@ -39,7 +39,7 @@ export default function FollowButton({
 
   return (
     <Button
-      className="h-10 flex items-center"
+      className="h-10 flex items-center cursor-pointer"
       aria-label="follow Button"
       onClick={handleFollow}
       disabled={isLoading}

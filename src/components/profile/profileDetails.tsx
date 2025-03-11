@@ -15,8 +15,8 @@ export default function ProfileDetails({
   const formattedDate = format(new Date(stats.createdAt), "MMMM yyyy");
   return (
     <div className="w-full space-y-2 text-sm text-muted-foreground">
-      <div className="flex gap-2 text-left ">
-        <MessageSquareText className="size-5 mr-2" />
+      <div className="flex gap-2 text-left">
+        <MessageSquareText className="size-5 " />
         {stats.bio || "No bio info"}
       </div>
 
@@ -34,7 +34,7 @@ export default function ProfileDetails({
                 ? stats.website
                 : `https://${stats.website}`
             }
-            className="text-left hover:underline break-all text-cyan-400"
+            className="text-left hover:underline break-all text-cyan-500"
             target="_blank"
             rel="noopener noreferrer"
           >

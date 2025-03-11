@@ -33,7 +33,7 @@
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
 
-    --color-shadow: var(--shadow);
+  --color-shadow: var(--shadow);
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -100,17 +100,14 @@
 }
 
 ::-webkit-scrollbar {
-  width: 5px;
-}
-
-::-webkit-scrollbar:horizontal {
-  height: 8px;
+  width: 7px;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-primary/80 rounded-full;
+  @apply min-h-[400px] bg-primary/80 rounded-full;
+
 }
 
-.task > ::-webkit-slider-thumb {
-  @apply bg-primary rounded-full;
+::-webkit-scrollbar-track {
+  @apply bg-primary/10 rounded-full;
 }
