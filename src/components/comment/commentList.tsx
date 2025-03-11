@@ -13,7 +13,7 @@ interface Props {
 
 export default function CommentList({ comments, currentUserId }: Props) {
   return (
-    <ScrollArea className="pr-4 max-h-[250px] overflow-auto ">
+    <ScrollArea className="pr-4 max-h-[500px] overflow-auto ">
       <div className="space-y-3">
         {comments.map((comment) => (
           <div
@@ -31,7 +31,7 @@ export default function CommentList({ comments, currentUserId }: Props) {
               <div className="flex flex-wrap items-center gap-2 ">
                 <Link
                   href={`/profile/${comment.author.name}`}
-                  className="hover:scale-105  text-sm"
+                  className="hover:scale-105  text-"
                 >
                   {comment.author.name}
                 </Link>

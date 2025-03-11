@@ -93,13 +93,13 @@ export default function CreatePost() {
               type="button"
               variant="ghost"
               size="sm"
-              className="flex items-center gap-2 text-muted-foreground transition-all rounded-[10px]"
+              className="flex items-center gap-2 text-muted-foreground transition-all rounded-[10px] cursor-pointer"
               onClick={() => setShowImageUpload(!showImageUpload)}
               disabled={isPosting}
               aria-label="Add Image Button"
             >
               <ImageIcon className="size-4" />
-              Photo
+              Upload Photo
             </Button>
 
             {/* Post Button */}
