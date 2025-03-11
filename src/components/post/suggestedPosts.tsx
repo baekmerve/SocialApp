@@ -2,7 +2,6 @@ import React from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "../ui/card";
 import Link from "next/link";
 import { getRandomPosts } from "@/actions/postActions";
-import { Avatar, AvatarImage } from "../ui/avatar";
 export default async function SuggestedPosts() {
   const posts = await getRandomPosts();
 
