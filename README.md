@@ -2,6 +2,12 @@
 
 A modern social media platform built with **Next.js**, **React**, **Clerk**, **Prisma**, **Tailwind CSS**, **Shadcn**, and more. Users can create posts, follow others, and interact with content.
 
+<div style="display: flex; gap: 20px; justify-content: center; align-items: center;">
+  <img src="https://github.com/user-attachments/assets/78b3f513-6973-4dfb-9fd5-d785e51d8c23" width="300" height="200" style="object-fit: cover;" />
+  <img src="https://github.com/user-attachments/assets/43f5ac36-ad49-4970-a7fd-b1949e3744de" width="300" height="200" style="object-fit: cover;" />
+  <img src="https://github.com/user-attachments/assets/292ac141-62c5-4129-9840-93959b71bc3d" width="300" height="200" style="object-fit: cover;" />
+</div>
+
 ## 🚀 Features
 
 ### 🔑 Authentication
@@ -30,10 +36,6 @@ A modern social media platform built with **Next.js**, **React**, **Clerk**, **P
 - **Dark/Light mode** toggle.
 - Responsive design with **Tailwind CSS** & **Shadcn components**.
 - **Blurred content for non-logged-in users**.
-
-![non logged in screen](public/images/blur.webp)
-![home screen](public/images/image1.webp)
-![home screen-dark](public/images/dark.webp)
 
 ### 📸 Media Uploads
 - Image uploads with **UploadThing**.
