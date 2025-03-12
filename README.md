@@ -31,6 +31,10 @@ A modern social media platform built with **Next.js**, **React**, **Clerk**, **P
 - Responsive design with **Tailwind CSS** & **Shadcn components**.
 - **Blurred content for non-logged-in users**.
 
+![non logged in screen](public/images/blur.webp)
+![home screen](public/images/image1.webp)
+![home screen-dark](public/images/dark.webp)
+
 ### 📸 Media Uploads
 - Image uploads with **UploadThing**.
 
