@@ -265,7 +265,7 @@ export async function getRandomPosts() {
             },
           },
         },
-        take: 3,
+        take: 5,
       });
     }
 
@@ -287,7 +287,7 @@ export async function getRandomPosts() {
           },
         },
       },
-      take: 3,
+      take: 5,
     });
   } catch (error) {
     console.error("error fetching random posts:", error);
