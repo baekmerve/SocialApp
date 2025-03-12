@@ -33,12 +33,12 @@ const PostContent = ({ post, useLink = true }: Props) => {
         </button>
       )}
       {post.image && (
-        <div className="relative mx-auto max-w-[90%] h-fit max-h-[300px] overflow-hidden border-2 shadow-md rounded-2xl">
+        <div className="relative mx-auto overflow-hidden border-2 max-w-[80%]  max-h-[300px] shadow-md rounded-2xl">
           <Image
             src={post.image}
             alt="Post content"
             width={200}
-            height={200}
+            height={100}
             className="w-full h-auto object-cover"
             priority
           />
