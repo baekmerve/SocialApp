@@ -249,10 +249,27 @@ export async function getRandomPosts() {
   try {
     const userId = await getDbUserId();
 
-    if (!userId) return [];
+    if (!userId) {
+      return await prisma.post.findMany({
+        select: {
+          id: true,
+          title: true,
+          content: true,
+          image: true,
+          author: {
+            select: {
+              id: true,
+              name: true,
+              username: true,
+              image: true,
+            },
+          },
+        },
+        take: 3,
+      });
+    }
 
-    //get 3 random users excluding ourselves and users we already follow
-    const randomPosts = await prisma.post.findMany({
+    return await prisma.post.findMany({
       where: {
         NOT: { authorId: userId },
       },
@@ -272,8 +289,6 @@ export async function getRandomPosts() {
       },
       take: 3,
     });
-
-    return randomPosts;
   } catch (error) {
     console.error("error fetching random posts:", error);
     return [];

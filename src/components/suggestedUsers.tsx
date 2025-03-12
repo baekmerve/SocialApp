@@ -5,7 +5,6 @@ import Link from "next/link";
 import { Avatar, AvatarImage } from "./ui/avatar";
 import FollowButton from "./profile/followButton";
 
-
 export default async function SuggestedUsers() {
   const users = await getRandomUsers();
   if (users.length === 0) return null;

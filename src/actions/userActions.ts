@@ -78,45 +78,6 @@ export async function getDbUserId() {
   return user.id;
 }
 
-export async function getRandomUsers() {
-
-  try {
-    const userId = await getDbUserId();
-
-    if (!userId) return [];
-
-    //get 3 random users excluding ourselves and users we already follow
-    const randomUsers = await prisma.user.findMany({
-      where: {
-        AND: [
-          { NOT: { id: userId } },
-          {
-            NOT: {
-              followers: {
-                some: {
-                  followerId: userId,
-                },
-              },
-            },
-          },
-        ],
-      },
-      select: {
-        id: true,
-        name: true,
-        username: true,
-        image: true,
-        _count: { select: { followers: true } },
-      },
-      take: 3,
-    });
-    return randomUsers;
-  } catch (error) {
-    console.error("error fetching random users:", error);
-    return [];
-  }
-}
-
 export async function toggleFollow(targetUserId: string) {
   try {
     const userId = await getDbUserId();
@@ -169,5 +130,50 @@ export async function toggleFollow(targetUserId: string) {
   } catch (error) {
     console.log("Error in toggleFollow", error);
     return { success: false, error: "Error in toggleFollow" };
+  }
+}
+
+export async function getRandomUsers() {
+  try {
+    const userId = await getDbUserId();
+
+    if (!userId) {
+      return await prisma.user.findMany({
+        select: {
+          id: true,
+          name: true,
+          username: true,
+          image: true,
+          _count: { select: { followers: true } },
+        },
+        take: 3,
+      });
+    }
+
+    return await prisma.user.findMany({
+      where: {
+        AND: [
+          { NOT: { id: userId } },
+          {
+            NOT: {
+              followers: {
+                some: { followerId: userId },
+              },
+            },
+          },
+        ],
+      },
+      select: {
+        id: true,
+        name: true,
+        username: true,
+        image: true,
+        _count: { select: { followers: true } },
+      },
+      take: 3,
+    });
+  } catch (error) {
+    console.error("Error fetching random users:", error);
+    return [];
   }
 }
