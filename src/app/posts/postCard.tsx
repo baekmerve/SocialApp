@@ -7,9 +7,10 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Post } from "@/types/type";
+import { LockIcon } from "lucide-react";
 import DeleteItem from "@/components/deleteItem";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { deletePost } from "@/actions/postActions";
 import PostFooter from "@/components/post/postFooter";
 
@@ -17,22 +18,31 @@ interface Props {
   post: Post;
   currentUserId: string | null;
   profileOwnerId?: string;
-  useLink?:boolean
+  useLink?: boolean;
 }
 
-export default function PostCard({
+export default function TestPostCard({
   post,
-  profileOwnerId,
   currentUserId,
-  useLink=true
+  profileOwnerId,
+  useLink = true,
 }: Props) {
+  const isLoggedIn = Boolean(currentUserId);
+
   return (
-    <Card className="mx-auto w-[90%] overflow-hidden rounded-2xl shadow-lg border-2 dark:shadow-shadow px-4">
+    <Card className="relative mx-auto w-[90%] overflow-hidden rounded-2xl shadow-lg border-2 dark:shadow-shadow px-4">
+      {/* Overlay for blur effect and lock icon */}
+      {!isLoggedIn && (
+        <div className="absolute inset-0 flex items-center justify-center bg-opacity-50 bg-bg/50 backdrop-blur-sm z-10">
+          <LockIcon />
+        </div>
+      )}
+
       {/* POST HEADER */}
-      <CardHeader className="px-4 ">
-        <div className="flex items-center ">
+      <CardHeader className="px-4">
+        <div className="flex items-center">
           <Link href={`/profile/${post.author.username}`}>
-            <Avatar className="w-12 h-12 border-2 ">
+            <Avatar className="w-12 h-12 border-2">
               <AvatarImage
                 src={post.author.image ?? "/avatar.avif"}
                 alt="user's avatar"
@@ -40,21 +50,20 @@ export default function PostCard({
               />
             </Avatar>
           </Link>
-
-          <div className="flex-1 min-w-0 p-2 ">
+          <div className="flex-1 min-w-0 p-2">
             <div className="flex justify-between items-start">
-              <div className="w-full flex space-x-2 justify-between  ">
-                <div className="flex items-center space-x-2 text-sm ">
+              <div className="w-full flex space-x-2 justify-between">
+                <div className="flex items-center space-x-2 text-sm">
                   <Link
                     href={`/profile/${post.author.username}`}
-                    className="font-semibold text-foreground text-base hover:scale-105 "
+                    className="font-semibold text-foreground text-base hover:scale-105"
                   >
                     {post.author.name}
                   </Link>
 
                   <Link
                     href={`/profile/${post.author.username}`}
-                    className="hover:scale-105 "
+                    className="hover:scale-105"
                   >
                     @{post.author.username}
                   </Link>
@@ -78,8 +87,8 @@ export default function PostCard({
 
       {/* POST CONTENT */}
       {useLink ? (
-        <Link href={`/posts/${post.id}`} className="block ">
-          <CardContent className="py-1 px-4 space-y-3 ">
+        <Link href={`/posts/${post.id}`} className="block">
+          <CardContent className="py-1 px-4 space-y-3">
             <p className="text-lg font-semibold break-words">{post.title}</p>
             <p className="text-sm break-words">{post.content}</p>
 
@@ -98,7 +107,7 @@ export default function PostCard({
           </CardContent>
         </Link>
       ) : (
-        <CardContent className="py-1 px-4 space-y-3 ">
+        <CardContent className="py-1 px-4 space-y-3">
           <p className="text-lg font-semibold break-words">{post.title}</p>
           <p className="text-sm break-words">{post.content}</p>
 
@@ -115,7 +124,6 @@ export default function PostCard({
           )}
         </CardContent>
       )}
-
       <CardFooter className="flex flex-col px-4  ">
         <PostFooter
           postId={post.id}

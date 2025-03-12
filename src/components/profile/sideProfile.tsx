@@ -1,5 +1,5 @@
 import React from "react";
-import { currentUser } from "@clerk/nextjs/server";
+import { auth } from "@clerk/nextjs/server";
 import Link from "next/link";
 import { Avatar, AvatarImage } from "../ui/avatar";
 import { getUserByClerkId } from "@/actions/userActions";
@@ -11,10 +11,11 @@ import ProfileDetails from "./profileDetails";
 import UnAuthenticatedSidebar from "../navbar/unAuthenticatedSidebar";
 
 export default async function SideProfile() {
-  const authUser = await currentUser();
-  if (!authUser) return <UnAuthenticatedSidebar />;
+  const { userId } = await auth();
 
-  const user = await getUserByClerkId(authUser.id);
+  if (!userId) return <UnAuthenticatedSidebar />;
+
+  const user = await getUserByClerkId(userId);
 
   if (!user) return null;
 
@@ -57,6 +58,7 @@ export default async function SideProfile() {
           </div>
 
           <ProfileDetails
+            currentUserId={userId}
             stats={{
               bio: user.bio,
               location: user.location,

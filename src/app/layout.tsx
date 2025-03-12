@@ -9,7 +9,6 @@ import SideProfile from "@/components/profile/sideProfile";
 
 import SuggestedPosts from "@/components/post/suggestedPosts";
 import SuggestedUsers from "@/components/suggestedUsers";
-import { currentUser } from "@clerk/nextjs/server";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,8 +30,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const authUser = await currentUser();
-
   return (
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>

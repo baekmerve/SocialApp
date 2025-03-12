@@ -1,7 +1,6 @@
 import { getPostById } from "@/actions/postActions";
 import { getDbUserId } from "@/actions/userActions";
 import React from "react";
-
 import PostCard from "../postCard";
 import { notFound } from "next/navigation";
 

@@ -3,7 +3,6 @@ import { getDbUserId } from "@/actions/userActions";
 import CreatePost from "./posts/createPost";
 import PostCard from "./posts/postCard";
 
-
 export default async function Home() {
   const posts = await getPosts();
   const currentUserId = await getDbUserId();
@@ -18,10 +17,6 @@ export default async function Home() {
           ))}
         </div>
       </div>
-      {/* <div className="hidden lg:block lg:col-span-4 sticky top-24 space-y-4">
-        <SuggestedPosts />
-        <SuggestedUsers />
-      </div> */}
     </div>
   );
 }
