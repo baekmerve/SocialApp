@@ -50,20 +50,18 @@ export default async function RootLayout({
               <main className="py-8">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 max-w-[95%] mx-auto px-4 relative min-h-screen">
                   {/* Left Sidebar */}
-                  <div className="hidden lg:block lg:col-span-3 self-start sticky top-24">
+                  <div className="hidden lg:block lg:col-span-3 self-start sticky top-24 space-y-10">
                     <SideProfile />
+                    <SuggestedUsers />
                   </div>
 
                   {/* Main Content */}
                   <div className="lg:col-span-6">{children}</div>
 
                   {/* Right Sidebar */}
-                  {authUser && (
-                    <div className="hidden lg:block lg:col-span-3 self-start sticky top-24 space-y-4">
-                      <SuggestedPosts />
-                      <SuggestedUsers />
-                    </div>
-                  )}
+                  <div className="hidden lg:block lg:col-span-3 self-start sticky top-24 ">
+                    <SuggestedPosts />
+                  </div>
                 </div>
               </main>
             </div>
