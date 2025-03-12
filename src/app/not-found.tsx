@@ -18,7 +18,7 @@ export default function NotFound() {
             {/* MESSAGE */}
             <div className="space-y-2">
               <h1 className="text-2xl font-bold tracking-tight">
-                User not found
+                Not found
               </h1>
               <p className="text-muted-foreground">
                 The user you're looking for doesn't exist.

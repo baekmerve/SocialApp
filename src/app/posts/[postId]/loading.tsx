@@ -14,15 +14,15 @@ export default function PostSkeleton() {
               <Skeleton className="h-10 w-10 rounded-full " />
 
               <div className="flex-1 space-y-2">
-                <Skeleton className="h-4 w-40" />
+                <Skeleton className="h-4 w-40 animate-pulse" />
 
                 <div className=" mt-5 space-y-2">
-                  <Skeleton className="h-4 w-full" />
-                  <Skeleton className="h-20 w-full" />
+                  <Skeleton className="h-4 w-full animate-pulse" />
+                  <Skeleton className="h-20 w-full animate-pulse" />
                 </div>
                 <div className="flex gap-5">
-                  <Skeleton className="size-5 rounded-full " />
-                  <Skeleton className="size-5 rounded-full " />
+                  <Skeleton className="size-5 rounded-full animate-pulse" />
+                  <Skeleton className="size-5 rounded-full animate-pulse" />
                 </div>
               </div>
             </div>

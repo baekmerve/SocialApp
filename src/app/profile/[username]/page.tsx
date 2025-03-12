@@ -94,15 +94,17 @@ export default async function ProfilePageServer({
             </div>
           </div>
           {/* Profile Details - Bio, Location, Website, Join Date */}
-          <ProfileDetails
-            currentUserId={currentUserId}
-            stats={{
-              bio: profileOwner.bio,
-              location: profileOwner.location,
-              website: profileOwner.website,
-              createdAt: profileOwner.createdAt,
-            }}
-          />
+        
+            <ProfileDetails
+              currentUserId={currentUserId}
+              stats={{
+                bio: profileOwner.bio,
+                location: profileOwner.location,
+                website: profileOwner.website,
+                createdAt: profileOwner.createdAt,
+              }}
+            />
+        
         </CardContent>
       </Card>
       <Tabs defaultValue="posts" className="w-full md:w-3/4  mx-auto flex ">

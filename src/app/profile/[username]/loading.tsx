@@ -11,15 +11,15 @@ export default function Loading() {
             {/* LEFT SIDE - Profile Image & Info */}
             <div className="flex flex-col items-center text-center">
               <Skeleton className="w-40 h-40 rounded-full shadow-md border border-border mb-4" />
-              <Skeleton className="w-40 h-6 mb-2" />
-              <Skeleton className="w-24 h-4" />
+              <Skeleton className="w-40 h-6 mb-2 animate-pulse" />
+              <Skeleton className="w-24 h-4 animate-pulse" />
 
               {/* Profile Stats */}
               <div className="flex justify-center gap-6 mt-4">
                 {[...Array(3)].map((_, index) => (
                   <div key={index} className="text-center">
-                    <Skeleton className="w-16 h-6 mb-2" />
-                    <Skeleton className="w-12 h-4" />
+                    <Skeleton className="w-16 h-6 mb-2 animate-pulse" />
+                    <Skeleton className="w-12 h-4 animate-pulse" />
                   </div>
                 ))}
               </div>
@@ -28,14 +28,14 @@ export default function Loading() {
             {/* RIGHT SIDE - Profile Actions & Info */}
             <div className="flex flex-col justify-between h-full">
               {/* Follow / Edit Button */}
-              <Skeleton className="w-36 h-10 mb-6 self-end" />
+              <Skeleton className="w-36 h-10 mb-6 self-end " />
 
               {/* Bio, Location, Website */}
               <div className="space-y-3 text-sm mt-6 text-muted-foreground">
                 {[...Array(4)].map((_, index) => (
                   <div key={index} className="flex items-center space-x-3">
-                    <Skeleton className="w-6 h-6" />
-                    <Skeleton className="w-48 h-4" />
+                    <Skeleton className="w-6 h-6 animate-pulse" />
+                    <Skeleton className="w-48 h-4 animate-pulse" />
                   </div>
                 ))}
               </div>

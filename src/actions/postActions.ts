@@ -349,7 +349,6 @@ export async function getPostById(postId: string) {
         },
       },
     });
-
     return post;
   } catch (error) {
     console.error("Error fetching post:", error);
