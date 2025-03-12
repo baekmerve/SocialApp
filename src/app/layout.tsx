@@ -6,7 +6,6 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/navbar/navbar";
 import { Toaster } from "react-hot-toast";
 import SideProfile from "@/components/profile/sideProfile";
-
 import SuggestedPosts from "@/components/post/suggestedPosts";
 import SuggestedUsers from "@/components/suggestedUsers";
 

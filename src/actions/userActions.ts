@@ -133,24 +133,31 @@ export async function toggleFollow(targetUserId: string) {
   }
 }
 
-export async function getRandomUsers() {
+export async function getRandomUsersPublic() {
+  try {
+    const randomUsers = await prisma.user.findMany({
+      select: {
+        id: true,
+        name: true,
+        username: true,
+        image: true,
+        _count: { select: { followers: true } },
+      },
+      take: 3,
+    });
+    return randomUsers;
+  } catch (error) {
+    console.error("Error fetching random users Public:", error);
+    return [];
+  }
+}
+export async function getRandomUsersPrivate() {
   try {
     const userId = await getDbUserId();
 
-    if (!userId) {
-      return await prisma.user.findMany({
-        select: {
-          id: true,
-          name: true,
-          username: true,
-          image: true,
-          _count: { select: { followers: true } },
-        },
-        take: 3,
-      });
-    }
+    if (!userId) return [];
 
-    return await prisma.user.findMany({
+    const randomUsers = await prisma.user.findMany({
       where: {
         AND: [
           { NOT: { id: userId } },
@@ -172,8 +179,9 @@ export async function getRandomUsers() {
       },
       take: 3,
     });
+    return randomUsers;
   } catch (error) {
-    console.error("Error fetching random users:", error);
+    console.error("Error fetching random users Private:", error);
     return [];
   }
 }

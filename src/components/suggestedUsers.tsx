@@ -1,12 +1,24 @@
-import { getRandomUsers } from "@/actions/userActions";
+import {
+  getRandomUsersPrivate,
+  getRandomUsersPublic,
+} from "@/actions/userActions";
 import React from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "./ui/card";
 import Link from "next/link";
 import { Avatar, AvatarImage } from "./ui/avatar";
 import FollowButton from "./profile/followButton";
+import { auth } from "@clerk/nextjs/server";
 
 export default async function SuggestedUsers() {
-  const users = await getRandomUsers();
+  const { userId } = await auth();
+
+  let users;
+  if (userId) {
+    users = await getRandomUsersPrivate();
+  } else {
+    users = await getRandomUsersPublic();
+  }
+
   if (users.length === 0) return null;
 
   return (
@@ -36,10 +48,22 @@ export default async function SuggestedUsers() {
                     href={`/profile/${user.username}`}
                     className="font-semibold text-foreground hover:text-primary-700 cursor-pointer"
                   >
-                    {user.name}
+                    <p className="text-xs text-muted-foreground">
+                      {userId ? (
+                        <span>{user.name || "Anonymous"}</span>
+                      ) : (
+                        <span>
+                          {user.name?.substring(0, 2) || "Anonymous"}**
+                        </span>
+                      )}
+                    </p>
                   </Link>
                   <p className="text-xs text-muted-foreground">
-                    @{user.username}
+                    {userId ? (
+                      <span>{user.username}</span>
+                    ) : (
+                      <span>{user.username.substring(0, 3)}**</span>
+                    )}
                   </p>
                   <p className="text-xs text-muted-foreground">
                     {user._count.followers} followers

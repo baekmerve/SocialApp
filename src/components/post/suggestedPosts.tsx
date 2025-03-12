@@ -1,9 +1,21 @@
 import React from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "../ui/card";
 import Link from "next/link";
-import { getRandomPosts } from "@/actions/postActions";
+
+import { auth } from "@clerk/nextjs/server";
+import {
+  getRandomPostsPrivate,
+  getRandomPostsPublic,
+} from "@/actions/postActions";
 export default async function SuggestedPosts() {
-  const posts = await getRandomPosts();
+  const { userId } = await auth();
+
+  let posts;
+  if (userId) {
+    posts = await getRandomPostsPrivate();
+  } else {
+    posts = await getRandomPostsPublic();
+  }
 
   if (posts.length === 0) return null;
 
@@ -35,9 +47,22 @@ export default async function SuggestedPosts() {
                   </p>
                 </div>
                 <div className="flex items-center gap-2 mt-2 self-end">
-                  <p className="text-xs">{post.author.name}</p>
                   <p className="text-xs text-muted-foreground">
-                    @{post.author.username}
+                    {userId ? (
+                      <span>{post.author.name || "Anonymous"}</span>
+                    ) : (
+                      <span>
+                        {post.author.name?.substring(0, 2) || "Anonymous"}**
+                      </span>
+                    )}
+                  </p>
+
+                  <p className="text-xs text-muted-foreground">
+                    {userId ? (
+                      <span>{post.author.username}</span>
+                    ) : (
+                      <span>{post.author.username.substring(0, 3)}**</span>
+                    )}
                   </p>
                 </div>
               </div>
