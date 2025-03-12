@@ -21,9 +21,9 @@ export default async function SinglePostPage({
   const { postId } = await params;
 
   return (
-    <div className="flex flex-col gap-16 ">
-      <h1 className="font-bold self-center text-2xl">Post Details</h1>
-      <div className="self-center max-w-[70%] h-fit p-2">
+    <div className="flex flex-col ">
+      <h1 className="font-bold self-center text-2xl mb-5">Post Details</h1>
+      <div className="self-center max-w-[90%] h-fit p-2 ">
         <Post postId={postId} />
       </div>
     </div>

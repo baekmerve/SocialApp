@@ -27,7 +27,7 @@ export default function PostCard({
   useLink=true
 }: Props) {
   return (
-    <Card className="overflow-hidden rounded-2xl shadow-lg border-2 dark:shadow-shadow">
+    <Card className="mx-auto w-[90%] overflow-hidden rounded-2xl shadow-lg border-2 dark:shadow-shadow px-4">
       {/* POST HEADER */}
       <CardHeader className="px-4 ">
         <div className="flex items-center ">
@@ -44,7 +44,7 @@ export default function PostCard({
           <div className="flex-1 min-w-0 p-2 ">
             <div className="flex justify-between items-start">
               <div className="w-full flex space-x-2 justify-between  ">
-                <div className="flex items-center space-x-2 text-sm text-gray-500">
+                <div className="flex items-center space-x-2 text-sm ">
                   <Link
                     href={`/profile/${post.author.username}`}
                     className="font-semibold text-foreground text-base hover:scale-105 "
@@ -59,7 +59,7 @@ export default function PostCard({
                     @{post.author.username}
                   </Link>
                   <span className="text-foreground">•</span>
-                  <span>
+                  <span className="text-muted-foreground">
                     {formatDistanceToNow(new Date(post.createdAt))} ago
                   </span>
                 </div>
@@ -91,6 +91,7 @@ export default function PostCard({
                   width={200}
                   height={200}
                   className="w-full h-auto object-cover"
+                  priority
                 />
               </div>
             )}

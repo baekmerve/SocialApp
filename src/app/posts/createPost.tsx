@@ -40,7 +40,7 @@ export default function CreatePost() {
   };
 
   return (
-    <Card className="mb-6 shadow-lg border border-muted-foreground/20 rounded-2xl">
+    <Card className="mx-auto w-[90%] mb-6 shadow-lg border border-muted-foreground/20 rounded-2xl">
       <CardContent className="pt-6 pb-4">
         <div className="space-y-4">
           {/* User Info & Textarea */}
@@ -104,7 +104,7 @@ export default function CreatePost() {
 
             {/* Post Button */}
             <Button
-              className="flex items-center px-4 py-2  shadow-md transition-all hover:bg-primary/90 rounded-[10px]"
+              className="flex items-center px-4 py-2  shadow-md transition-all hover:bg-primary/90 rounded-[10px] cursor-pointer"
               onClick={handleSubmit}
               aria-label="Post Button"
               disabled={!title.trim() || !content.trim() || isPosting}

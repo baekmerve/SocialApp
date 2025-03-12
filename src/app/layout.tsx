@@ -7,6 +7,10 @@ import Navbar from "@/components/navbar/navbar";
 import { Toaster } from "react-hot-toast";
 import SideProfile from "@/components/profile/sideProfile";
 
+import SuggestedPosts from "@/components/post/suggestedPosts";
+import SuggestedUsers from "@/components/suggestedUsers";
+import { currentUser } from "@clerk/nextjs/server";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -22,11 +26,13 @@ export const metadata: Metadata = {
   description: "A modern social media application powered by Next.js",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const authUser = await currentUser();
+
   return (
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
@@ -42,13 +48,22 @@ export default function RootLayout({
             <div className="min-h-screen">
               <Navbar />
               <main className="py-8">
-                <div className="max-w-[95%] mx-auto px-4">
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 ">
-                    <div className="hidden lg:block lg:col-span-3">
-                      <SideProfile />
-                    </div>
-                    <div className="lg:col-span-9"> {children}</div>
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 max-w-[95%] mx-auto px-4 relative min-h-screen">
+                  {/* Left Sidebar */}
+                  <div className="hidden lg:block lg:col-span-3 self-start sticky top-24">
+                    <SideProfile />
                   </div>
+
+                  {/* Main Content */}
+                  <div className="lg:col-span-6">{children}</div>
+
+                  {/* Right Sidebar */}
+                  {authUser && (
+                    <div className="hidden lg:block lg:col-span-3 self-start sticky top-24 space-y-4">
+                      <SuggestedPosts />
+                      <SuggestedUsers />
+                    </div>
+                  )}
                 </div>
               </main>
             </div>

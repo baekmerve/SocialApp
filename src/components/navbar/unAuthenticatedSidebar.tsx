@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 
 export default function UnAuthenticatedSidebar() {
   return (
-    <div className="sticky top-20">
+    <div className="sticky top-24">
       <Card>
         <CardHeader>
           <CardTitle className="text-center text-xl font-semibold">

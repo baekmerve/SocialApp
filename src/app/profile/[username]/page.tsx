@@ -55,7 +55,7 @@ export default async function ProfilePageServer({
   const isOwnProfile = currentUserId === profileOwner.id;
 
   return (
-    <div className="mx-auto h-full ">
+    
       <div className="grid grid-cols-1 gap-6 ">
         <Card className="p-6 rounded-2xl shadow-lg bg-background">
           <CardContent className="space-y-6 min-h-[300px] border-2 rounded-2xl py-5">
@@ -135,7 +135,7 @@ export default async function ProfilePageServer({
 
           {/* Posts Tab Content */}
           <TabsContent value="posts" className="mt-6 animate-fade-in">
-            <div className="space-y-6">
+            <div className="space-y-6 ">
               {posts.length > 0 ? (
                 posts.map((post) => (
                   <PostCard
@@ -174,6 +174,6 @@ export default async function ProfilePageServer({
           </TabsContent>
         </Tabs>
       </div>
-    </div>
+    
   );
 }
