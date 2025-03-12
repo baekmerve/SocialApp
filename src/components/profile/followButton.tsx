@@ -6,7 +6,7 @@ import { Button } from "../ui/button";
 import { Loader2, UserMinus, UserPlus } from "lucide-react";
 import toast from "react-hot-toast";
 import { toggleFollow } from "@/actions/userActions";
-import { useUser } from "@clerk/nextjs";
+import { SignInButton, useUser } from "@clerk/nextjs";
 
 interface Props {
   userId: string;
@@ -38,30 +38,41 @@ export default function FollowButton({
   };
 
   return (
-    <Button
-      className="h-10 flex items-center cursor-pointer"
-      aria-label="follow Button"
-      onClick={handleFollow}
-      disabled={isLoading}
-      variant={isFollowing ? "outline" : "default"}
-    >
-      {isLoading ? (
-        <Loader2 className="animate-spin size-5 mr-2" />
+    <div className="mt-4">
+      {!user ? (
+        <SignInButton mode="modal">
+          <Button className="h-10 flex items-center">
+            <UserPlus className="size-5 mr-2" />
+            Follow
+          </Button>
+        </SignInButton>
       ) : (
-        <div className="flex items-center">
-          {isFollowing ? (
-            <>
-              <UserMinus className="size-5 mr-2" />
-              <span>Unfollow</span>
-            </>
+        <Button
+          className="h-10 flex items-center cursor-pointer"
+          aria-label="follow Button"
+          onClick={handleFollow}
+          disabled={isLoading}
+          variant={isFollowing ? "outline" : "default"}
+        >
+          {isLoading ? (
+            <Loader2 className="animate-spin size-5 mr-2" />
           ) : (
-            <>
-              <UserPlus className="size-5 mr-2" />
-              <span>Follow</span>
-            </>
+            <div className="flex items-center">
+              {isFollowing ? (
+                <>
+                  <UserMinus className="size-5 mr-2" />
+                  <span>Unfollow</span>
+                </>
+              ) : (
+                <>
+                  <UserPlus className="size-5 mr-2" />
+                  <span>Follow</span>
+                </>
+              )}
+            </div>
           )}
-        </div>
+        </Button>
       )}
-    </Button>
+    </div>
   );
 }
